@@ -1,8 +1,6 @@
 package se331.lab.dao;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import se331.lab.entity.Event;
 
