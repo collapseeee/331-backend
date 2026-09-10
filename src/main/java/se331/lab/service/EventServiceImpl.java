@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import se331.lab.dao.EventDao;
 import se331.lab.entity.Event;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class EventServiceImpl implements EventService {
@@ -32,4 +30,6 @@ public class EventServiceImpl implements EventService {
     public Event save(Event event) {
         return eventDao.save(event);
     }
+
+
 }
