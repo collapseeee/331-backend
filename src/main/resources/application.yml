@@ -4,6 +4,9 @@ spring:
       - db
   application:
     name: 331-backend
+  mvc:
+    problemdetails:
+      enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/selabdb
     username: postgres
