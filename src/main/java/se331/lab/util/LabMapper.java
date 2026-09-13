@@ -4,6 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import se331.lab.entity.Event;
 import se331.lab.entity.EventDTO;
+import se331.lab.entity.Organizer;
+import se331.lab.entity.OrganizerDTO;
 
 import java.util.List;
 
@@ -12,4 +14,6 @@ public interface LabMapper {
     LabMapper INSTANCE = Mappers.getMapper(LabMapper.class);
     EventDTO getEventDto(Event event);
     List<EventDTO> getEventDto(List<Event> events);
+    OrganizerDTO getOrganizerDto(Organizer organizer);
+    List<OrganizerDTO> getOrganizerDto(List<Organizer> organizers);
 }
