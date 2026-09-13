@@ -3,6 +3,7 @@ package se331.lab.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -10,6 +11,8 @@ import se331.lab.dao.EventDao;
 import se331.lab.dao.OrganizerDao;
 import se331.lab.entity.Event;
 import se331.lab.entity.Organizer;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
