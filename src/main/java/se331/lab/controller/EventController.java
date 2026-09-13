@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.lab.entity.Event;
 import se331.lab.service.EventService;
+import se331.lab.util.LabMapper;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class EventController {
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         try {
-            return ResponseEntity.ok().headers(responseHeader).body(pageOutput.getContent());
+            return ResponseEntity.ok().headers(responseHeader).body(LabMapper.INSTANCE.getEventDto(pageOutput.getContent()));
         } catch (IndexOutOfBoundsException ex) {
             return ResponseEntity.ok().headers(responseHeader).body(pageOutput.getContent());
         }
@@ -34,7 +35,7 @@ public class EventController {
     public ResponseEntity<?> getEvent(@PathVariable("id") Long id) {
         Event output = eventService.getEvent(id);
         if (output != null) {
-            return ResponseEntity.ok(output);
+            return ResponseEntity.ok(LabMapper.INSTANCE.getEventDto(output));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
@@ -43,6 +44,6 @@ public class EventController {
     @PostMapping("/events")
     public ResponseEntity<?> addEvent(@RequestBody Event event) {
         Event output = eventService.save(event);
-        return ResponseEntity.ok(output);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getEventDto(output));
     }
 }
