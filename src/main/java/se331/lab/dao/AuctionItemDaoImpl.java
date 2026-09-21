@@ -20,4 +20,9 @@ public class AuctionItemDaoImpl implements AuctionItemDao {
     public Page<AuctionItem> getAuctionItems(Pageable pageRequest) {
         return auctionItemRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Page<AuctionItem> getAuctionItems(String description, Pageable pageRequest) {
+        return auctionItemRepository.findByDescriptionIgnoreCaseContaining(description, pageRequest);
+    }
 }

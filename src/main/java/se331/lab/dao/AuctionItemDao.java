@@ -7,4 +7,5 @@ import se331.lab.entity.AuctionItem;
 public interface AuctionItemDao {
     Integer getAuctionItemSize();
     Page<AuctionItem> getAuctionItems(Pageable pageRequest);
+    Page<AuctionItem> getAuctionItems(String description, Pageable pageRequest);
 }
