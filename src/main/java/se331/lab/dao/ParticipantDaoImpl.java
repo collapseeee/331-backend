@@ -10,7 +10,6 @@ import se331.lab.repository.ParticipantRepository;
 
 @Repository
 @RequiredArgsConstructor
-@Profile("db")
 public class ParticipantDaoImpl implements ParticipantDao {
     final ParticipantRepository participantRepository;
     @Override
