@@ -19,15 +19,19 @@ public class AuctionItemController {
     @GetMapping("/auctionItems")
     public ResponseEntity<?> getAuctionItems(@RequestParam(value = "_limit", required = false) Integer perPage,
                                              @RequestParam(value = "_page", required = false) Integer page,
-                                             @RequestParam(value = "description", required = false) String description
+                                             @RequestParam(value = "description", required = false) String description,
+                                             @RequestParam(value = "amount", required = false) Integer amount
     ) {
         perPage = perPage == null ? auctionItemService.getAuctionItemSize() : perPage;
         page = page == null ? 1 : page;
+        amount = amount == null ? 0 : amount;
         Page<AuctionItem> pageOutput;
-        if (description == null) {
+        if (description == null && amount == 0) {
             pageOutput =  auctionItemService.getAuctionItems(PageRequest.of(page - 1, perPage));
-        } else {
+        } else if (description != null) {
             pageOutput = auctionItemService.getAuctionItems(description, PageRequest.of(page - 1, perPage));
+        } else {
+            pageOutput = auctionItemService.getAuctionItems(amount, PageRequest.of(page - 1, perPage));
         }
         return ResponseEntity.ok(LabMapper.INSTANCE.getAuctionItemDto(pageOutput.getContent()));
     }
