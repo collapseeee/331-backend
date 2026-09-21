@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AuctionItemRepository extends JpaRepository<AuctionItem,Long> {
     List<AuctionItem> findAll();
-    Page<AuctionItem> findByDescriptionIgnoreCaseContaining(String description, Pageable pageRequest);
+    Page<AuctionItem> findByDescriptionIgnoreCaseContainingOrTypeIgnoreCaseContaining(String description, String type, Pageable pageRequest);
     Page<AuctionItem> findBySuccessfulBid_AmountLessThan(Double successfulBidAmountIsLessThan, Pageable pageRequest);
 }
