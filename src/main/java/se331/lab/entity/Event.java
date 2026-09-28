@@ -28,4 +28,6 @@ public class Event {
     @ManyToMany(mappedBy = "eventHistories")
     @Builder.Default
     List<Participant> participants = new ArrayList<>();
+    @ElementCollection
+    List<String> images;
 }
