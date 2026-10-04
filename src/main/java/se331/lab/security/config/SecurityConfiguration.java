@@ -33,6 +33,9 @@ public class SecurityConfiguration {
               session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             })
 
+            .authorizeHttpRequests((authorize) ->{
+              authorize.anyRequest().authenticated();
+            })
 
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .logout((logout) -> {
