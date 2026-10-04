@@ -27,15 +27,15 @@ public class SecurityConfiguration {
     });
     http
             .csrf((crsf) -> crsf.disable())
-
+            .authorizeHttpRequests((authorize) ->{
+              authorize.requestMatchers("/api/v1/auth/**").permitAll()
+                      .anyRequest().authenticated();
+            })
 
             .sessionManagement((session) ->{
               session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             })
 
-            .authorizeHttpRequests((authorize) ->{
-              authorize.anyRequest().authenticated();
-            })
 
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .logout((logout) -> {
