@@ -2,6 +2,7 @@ package se331.lab.security.auth;
 
 
 
+import se331.lab.util.LabMapper;
 import tools.jackson.databind.json.JsonMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import se331.lab.security.user.Role;
 import se331.lab.security.user.User;
 import se331.lab.security.user.UserRepository;
 
+import jakarta.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 
@@ -69,6 +71,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
+            .user(LabMapper.INSTANCE.getOrganizerDto(user.getOrganizer()))
             .build();
   }
 
