@@ -71,7 +71,7 @@ public class AuthenticationService {
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
-            .user(LabMapper.INSTANCE.getOrganizerDto(user.getOrganizer()))
+            .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
             .build();
   }
 
